@@ -22,12 +22,12 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ selectedRole }) =>
       {/* Enhanced Branding */}
       <div className="mb-8 md:mb-12">
         <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent mb-4">
-          AI Assistant
+          
         </h1>
         <div className="flex items-center justify-center gap-2 md:gap-3 mb-4 md:mb-6">
           <div className="h-px bg-gradient-to-r from-transparent via-blue-500 to-transparent flex-1 max-w-12 sm:max-w-16 md:max-w-24 lg:max-w-32"></div>
           <div className="px-3 md:px-4 py-1.5 md:py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-xs md:text-sm font-bold rounded-full shadow-lg">
-            EXPERT SYSTEM
+            AI Engineering 
           </div>
           <div className="h-px bg-gradient-to-r from-transparent via-blue-500 to-transparent flex-1 max-w-12 sm:max-w-16 md:max-w-24 lg:max-w-32"></div>
         </div>
