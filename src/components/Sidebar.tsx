@@ -110,10 +110,10 @@ export const Sidebar: React.FC<SidebarProps> = ({
               </div>
               <div className="min-w-0 flex-1">
                 <h2 className="text-sm sm:text-base font-black bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-                  AI Assistant
+                  CemtrAS BYVS
                 </h2>
                 <p className="text-xs font-medium text-blue-600 dark:text-blue-400">
-                  Expert System
+                  AI Expert 
                 </p>
               </div>
             </div>
