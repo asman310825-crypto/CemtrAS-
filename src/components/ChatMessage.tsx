@@ -90,10 +90,10 @@ export const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
           </div>
         </div>
         
-        {/* Enhanced Timestamp */}
+        {/* Enhanced Timestamp with Short Role Labels */}
         <div className={`text-xs text-gray-500 dark:text-gray-400 mt-1.5 sm:mt-2 md:mt-3 font-semibold flex items-center gap-1.5 sm:gap-2 ${isUser ? 'justify-end' : 'justify-start'}`}>
           <div className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full ${isUser ? 'bg-blue-500' : 'bg-gray-500'}`}></div>
-          <span>{isUser ? 'YOU' : 'CemtrAS AI'}</span>
+          <span>{isUser ? 'You' : 'CemtrAS'}</span>
           <span>•</span>
           <span className="hidden sm:inline">{message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
           <span className="sm:hidden">{message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false })}</span>
