@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Factory, User, ArrowRight, Sparkles, Shield, Zap } from 'lucide-react';
+import { Bot, User, ArrowRight, Shield, Zap } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 
 interface NameEntryScreenProps {
@@ -45,25 +45,8 @@ export const NameEntryScreen: React.FC<NameEntryScreenProps> = ({ onComplete }) 
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-blue-600/30 to-indigo-600/30 rounded-full blur-2xl"></div>
               <div className="relative p-3 sm:p-4 bg-gradient-to-br from-white to-blue-50 rounded-2xl sm:rounded-3xl border-2 border-blue-200 shadow-2xl w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 mx-auto flex items-center justify-center backdrop-blur-sm">
-                {/* Your actual logo image */}
-                <img 
-                  src="/Logo.png" 
-                  alt="CemtrAS AI Logo" 
-                  className="w-12 h-12 sm:w-16 sm:h-16 md:w-18 md:h-18 lg:w-20 lg:h-20 object-contain rounded-xl sm:rounded-2xl"
-                  onError={(e) => {
-                    // Fallback to Factory icon if logo fails to load
-                    const target = e.target as HTMLImageElement;
-                    target.style.display = 'none';
-                    const fallback = target.nextElementSibling as HTMLElement;
-                    if (fallback) fallback.style.display = 'flex';
-                  }}
-                />
-                {/* Fallback Factory icon (hidden by default) */}
-                <div className="absolute inset-3 sm:inset-4 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-xl sm:rounded-2xl shadow-lg items-center justify-center" style={{ display: 'none' }}>
-                  <Factory className="text-white w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12" />
-                </div>
-                <div className="absolute -top-1 -right-1 sm:-top-2 sm:-right-2 w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center shadow-lg">
-                  <Sparkles className="text-white w-2.5 h-2.5 sm:w-3 sm:h-3 md:w-3.5 md:h-3.5 lg:w-4 lg:h-4" />
+                <div className="bg-gradient-to-br from-blue-600 to-indigo-700 rounded-xl sm:rounded-2xl shadow-lg flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 md:w-18 md:h-18 lg:w-20 lg:h-20">
+                  <Bot className="text-white w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12" />
                 </div>
               </div>
             </div>
@@ -71,12 +54,12 @@ export const NameEntryScreen: React.FC<NameEntryScreenProps> = ({ onComplete }) 
             {/* Enhanced Branding */}
             <div className="space-y-3 sm:space-y-4">
               <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
-                CemtrAS AI
+                AI Assistant
               </h1>
               <div className="flex items-center justify-center gap-2 sm:gap-3">
                 <div className="h-px bg-gradient-to-r from-transparent via-blue-500 to-transparent flex-1 max-w-12 sm:max-w-16 md:max-w-24"></div>
                 <div className="px-2 py-1 sm:px-3 sm:py-1 md:px-4 md:py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-xs sm:text-sm font-bold rounded-full shadow-lg">
-                  AI-DRIVEN ENGINEERING
+                  EXPERT SYSTEM
                 </div>
                 <div className="h-px bg-gradient-to-r from-transparent via-blue-500 to-transparent flex-1 max-w-12 sm:max-w-16 md:max-w-24"></div>
               </div>

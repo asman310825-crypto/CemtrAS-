@@ -120,7 +120,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({
   const hasVoiceSupport = 'webkitSpeechRecognition' in window || 'SpeechRecognition' in window;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-t border-gray-200/50 dark:border-gray-700/50 shadow-2xl">
+    <div className="sticky bottom-0 left-0 right-0 z-50 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-t border-gray-200/50 dark:border-gray-700/50 shadow-2xl">
       <div className="max-w-4xl mx-auto p-4 sm:p-6 space-y-4">
         {/* File Uploads Display */}
         {uploadedFiles.length > 0 && (

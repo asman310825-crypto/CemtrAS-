@@ -26,7 +26,7 @@ export const LoadingMessage: React.FC = () => {
             <div className="flex items-center gap-3">
               <Zap className="text-blue-600 dark:text-blue-400 animate-pulse" size={18} />
               <span className="text-sm text-gray-700 dark:text-gray-300 font-bold">
-                CemtrAS AI is analyzing your query...
+                AI is analyzing your query...
               </span>
               <Sparkles className="text-yellow-500 animate-spin" size={16} />
             </div>
@@ -36,7 +36,7 @@ export const LoadingMessage: React.FC = () => {
         {/* Enhanced Timestamp */}
         <div className="text-xs text-gray-500 dark:text-gray-400 mt-3 font-semibold flex items-center gap-2">
           <div className="w-2 h-2 bg-gray-500 rounded-full animate-pulse"></div>
-          <span>CemtrAS AI</span>
+          <span>AI</span>
           <span>•</span>
           <span>Processing...</span>
         </div>

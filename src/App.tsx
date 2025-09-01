@@ -26,7 +26,7 @@ function App() {
     uploadedFiles: []
   });
   const [error, setError] = useState<string | null>(null);
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false); // Hidden by default
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {

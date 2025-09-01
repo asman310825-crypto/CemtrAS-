@@ -1,5 +1,5 @@
 import React from 'react';
-import { Factory, Sparkles, ArrowRight, Zap, Shield, Target } from 'lucide-react';
+import { Bot, ArrowRight, Zap, Shield, Target } from 'lucide-react';
 import type { UserRole } from '../types';
 
 interface WelcomeScreenProps {
@@ -14,10 +14,7 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ selectedRole }) =>
         <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-indigo-600/20 rounded-full blur-3xl"></div>
         <div className="relative p-6 sm:p-8 md:p-12 bg-gradient-to-br from-white to-blue-50/50 dark:from-gray-800 dark:to-blue-900/20 rounded-2xl md:rounded-3xl border-2 border-blue-200/50 dark:border-blue-800/50 shadow-2xl w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 mx-auto flex items-center justify-center backdrop-blur-sm">
           <div className="absolute inset-3 md:inset-4 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-xl md:rounded-2xl shadow-lg flex items-center justify-center">
-            <Factory className="text-white w-8 h-8 sm:w-12 sm:h-12 md:w-16 md:h-16 lg:w-20 lg:h-20" />
-          </div>
-          <div className="absolute -top-1 -right-1 md:-top-2 md:-right-2 w-6 h-6 md:w-8 md:h-8 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center shadow-lg">
-            <Sparkles className="text-white w-2.5 h-2.5 sm:w-3 sm:h-3 md:w-4 md:h-4" />
+            <Bot className="text-white w-8 h-8 sm:w-12 sm:h-12 md:w-16 md:h-16 lg:w-20 lg:h-20" />
           </div>
         </div>
       </div>
@@ -25,12 +22,12 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ selectedRole }) =>
       {/* Enhanced Branding */}
       <div className="mb-8 md:mb-12">
         <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent mb-4">
-          CemtrAS AI
+          AI Assistant
         </h1>
         <div className="flex items-center justify-center gap-2 md:gap-3 mb-4 md:mb-6">
           <div className="h-px bg-gradient-to-r from-transparent via-blue-500 to-transparent flex-1 max-w-12 sm:max-w-16 md:max-w-24 lg:max-w-32"></div>
           <div className="px-3 md:px-4 py-1.5 md:py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-xs md:text-sm font-bold rounded-full shadow-lg">
-            AI-DRIVEN ENGINEERING
+            EXPERT SYSTEM
           </div>
           <div className="h-px bg-gradient-to-r from-transparent via-blue-500 to-transparent flex-1 max-w-12 sm:max-w-16 md:max-w-24 lg:max-w-32"></div>
         </div>

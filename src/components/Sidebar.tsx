@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Factory, User, LogOut, X, Plus, MessageSquare, Zap, History, Sparkles } from 'lucide-react';
+import { Bot, User, LogOut, X, Plus, MessageSquare, Zap, History } from 'lucide-react';
 import { RoleSelector } from './RoleSelector';
 import { useAuth } from '../contexts/AuthContext';
 import { useChatHistory } from '../contexts/ChatHistoryContext';
@@ -89,7 +89,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
       {/* Enhanced Sidebar */}
       <div 
         className={`
-          ${isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
+          ${isOpen ? 'translate-x-0' : '-translate-x-full'}
           fixed lg:static z-50 lg:z-auto
           w-64 sm:w-72 md:w-80 lg:w-72 xl:w-80 h-full
           bg-white/90 dark:bg-gray-900/90 backdrop-blur-md
@@ -104,19 +104,16 @@ export const Sidebar: React.FC<SidebarProps> = ({
           <div className="flex items-center justify-between mb-3 sm:mb-4 md:mb-6">
             <div className="flex items-center gap-2 sm:gap-3">
               <div className="relative">
-                <div className="p-1.5 sm:p-2 md:p-3 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-lg sm:rounded-xl md:rounded-2xl shadow-xl">
-                  <Factory className="text-white w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
-                </div>
-                <div className="absolute -top-0.5 -right-0.5 sm:-top-1 sm:-right-1 w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center">
-                  <Sparkles className="text-white w-1.5 h-1.5 sm:w-2 sm:h-2 md:w-2.5 md:h-2.5" />
+                <div className="p-2 sm:p-3 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-lg sm:rounded-xl shadow-xl">
+                  <Bot className="text-white w-4 h-4 sm:w-5 sm:h-5" />
                 </div>
               </div>
               <div className="min-w-0 flex-1">
-                <h2 className="text-base sm:text-lg md:text-xl font-black bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-                  CemtrAS AI
+                <h2 className="text-sm sm:text-base font-black bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+                  AI Assistant
                 </h2>
-                <p className="text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wide">
-                  AI-Driven Engineering
+                <p className="text-xs font-medium text-blue-600 dark:text-blue-400">
+                  Expert System
                 </p>
               </div>
             </div>
@@ -130,28 +127,28 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
           {/* Enhanced User Profile */}
           {user && (
-            <div className="p-3 sm:p-4 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl sm:rounded-2xl border border-gray-200/50 dark:border-gray-700/50 shadow-lg">
-              <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
-                <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center shadow-lg">
-                  <User className="text-white w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5" />
+            <div className="p-2 sm:p-3 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-lg sm:rounded-xl border border-gray-200/50 dark:border-gray-700/50 shadow-lg">
+              <div className="flex items-center gap-2 mb-1 sm:mb-2">
+                <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center shadow-lg">
+                  <User className="text-white w-3 h-3 sm:w-3.5 sm:h-3.5" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h3 className="text-xs sm:text-sm font-bold text-gray-900 dark:text-white truncate">
-                    {user.name}
+                  <h3 className="text-xs font-bold text-gray-900 dark:text-white truncate">
+                    {user.name.length > 12 ? user.name.substring(0, 12) + '...' : user.name}
                   </h3>
-                  <div className="flex items-center gap-2">
-                    <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-green-500 rounded-full animate-pulse"></div>
-                    <span className="text-xs font-semibold text-green-600 dark:text-green-400">
-                      Premium Access
+                  <div className="flex items-center gap-1">
+                    <div className="w-1 h-1 bg-green-500 rounded-full animate-pulse"></div>
+                    <span className="text-xs font-medium text-green-600 dark:text-green-400">
+                      Active
                     </span>
                   </div>
                 </div>
                 <button
                   onClick={() => setShowLogoutConfirm(true)}
-                  className="touch-target p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
+                  className="touch-target p-1.5 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md transition-colors min-w-[32px] min-h-[32px] flex items-center justify-center"
                   title="Logout"
                 >
-                  <LogOut className="text-gray-400 hover:text-red-500 w-4 h-4" />
+                  <LogOut className="text-gray-400 hover:text-red-500 w-3 h-3" />
                 </button>
               </div>
             </div>
@@ -171,11 +168,11 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
           {/* Role Selection */}
           <div>
-            <h4 className="text-xs sm:text-sm font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wide mb-3 sm:mb-4 flex items-center gap-2">
-              <Zap className="w-4 h-4 text-blue-500" />
+            <h4 className="text-sm font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wide mb-4 flex items-center gap-2">
+              <Zap className="w-5 h-5 text-blue-500" />
               Select Expertise
             </h4>
-            <div className="max-h-48 sm:max-h-60 md:max-h-80 lg:max-h-96 overflow-y-auto pr-1 sm:pr-2 scrollbar-thin overscroll-contain">
+            <div className="max-h-64 sm:max-h-80 md:max-h-96 lg:max-h-[32rem] overflow-y-auto pr-1 sm:pr-2 scrollbar-thin overscroll-contain">
               <RoleSelector 
                 selectedRole={selectedRole}
                 onRoleChange={handleRoleChange}
@@ -185,8 +182,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
           {/* Unified Chat History */}
           <div className="flex-1 min-h-0">
-            <h4 className="text-xs sm:text-sm font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wide mb-3 sm:mb-4 flex items-center gap-2">
-              <History className="w-4 h-4 text-purple-500" />
+            <h4 className="text-sm font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wide mb-4 flex items-center gap-2">
+              <History className="w-5 h-5 text-purple-500" />
               Chat History
             </h4>
             <div className="h-full overflow-y-auto pr-1 sm:pr-2 space-y-2 scrollbar-thin overscroll-contain">
@@ -213,11 +210,11 @@ export const Sidebar: React.FC<SidebarProps> = ({
                       </div>
                       <div className="flex-1 min-w-0">
                         <h5 className="text-xs sm:text-sm font-bold text-gray-900 dark:text-white truncate group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                          {chat.title}
+                          {chat.title.length > 25 ? chat.title.substring(0, 25) + '...' : chat.title}
                         </h5>
                         <div className="flex items-center gap-1 sm:gap-2 mt-1 flex-wrap">
                           <span className="text-xs font-medium text-blue-600 dark:text-blue-400 bg-blue-100/80 dark:bg-blue-900/30 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full">
-                            {chat.role}
+                            {chat.role === 'General AI' ? 'AI' : chat.role.split(' ')[0]}
                           </span>
                           <span className="text-xs text-gray-500 dark:text-gray-400">
                             {chat.messages.length} messages
@@ -282,12 +279,9 @@ export const Sidebar: React.FC<SidebarProps> = ({
             </div>
             
             {/* Powered By */}
-            <div className="pt-2 sm:pt-3 border-t border-gray-200/50 dark:border-gray-700/50">
+            <div className="pt-1 sm:pt-2 border-t border-gray-200/50 dark:border-gray-700/50">
               <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">
                 Powered by <span className="text-blue-600 dark:text-blue-400 font-bold">AI Technology</span>
-              </p>
-              <p className="text-xs text-gray-400 dark:text-gray-500 mt-1">
-                © 2025 CemtrAS AI
               </p>
             </div>
           </div>
