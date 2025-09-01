@@ -67,12 +67,12 @@ const roles: {
 
 export const RoleSelector: React.FC<RoleSelectorProps> = ({ selectedRole, onRoleChange }) => {
   return (
-    <div className="space-y-3">
+    <div className="space-y-2 sm:space-y-3">
       {roles.map((role) => (
         <button
           key={role.value}
           onClick={() => onRoleChange(role.value)}
-          className={`w-full group relative overflow-hidden rounded-2xl transition-all duration-300 ${
+          className={`w-full group relative overflow-hidden rounded-lg sm:rounded-xl md:rounded-2xl transition-all duration-300 touch-target ${
             selectedRole === role.value
               ? 'shadow-xl hover:shadow-2xl transform hover:-translate-y-1'
               : 'shadow-md hover:shadow-lg transform hover:-translate-y-0.5'
@@ -84,13 +84,13 @@ export const RoleSelector: React.FC<RoleSelectorProps> = ({ selectedRole, onRole
           } transition-opacity duration-300`}></div>
           
           {/* Content */}
-          <div className={`relative p-3 md:p-4 ${
+          <div className={`relative p-2.5 sm:p-3 md:p-4 ${
             selectedRole === role.value 
               ? 'text-white' 
               : 'bg-white/80 dark:bg-gray-800/80 text-gray-700 dark:text-gray-300 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50'
           } transition-all duration-300`}>
-            <div className="flex items-center gap-3 md:gap-4">
-              <div className={`p-2 rounded-xl shadow-lg ${
+            <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
+              <div className={`p-1.5 sm:p-2 rounded-lg sm:rounded-xl shadow-lg ${
                 selectedRole === role.value 
                   ? 'bg-white/20 backdrop-blur-sm' 
                   : 'bg-gray-100 dark:bg-gray-700 group-hover:bg-white/20 group-hover:backdrop-blur-sm'
@@ -98,21 +98,21 @@ export const RoleSelector: React.FC<RoleSelectorProps> = ({ selectedRole, onRole
                 {role.icon}
               </div>
               <div className="text-left flex-1 min-w-0">
-                <div className={`font-bold text-sm mb-1 ${
+                <div className={`font-bold text-xs sm:text-sm mb-0.5 sm:mb-1 ${
                   selectedRole === role.value ? 'text-white' : 'text-gray-900 dark:text-white group-hover:text-white'
                 } transition-colors duration-300 truncate`}>
                   {role.label}
                 </div>
-                <div className={`text-xs hidden md:block ${
+                <div className={`text-xs hidden sm:block ${
                   selectedRole === role.value ? 'text-white/80' : 'text-gray-500 dark:text-gray-400 group-hover:text-white/80'
                 } transition-colors duration-300 truncate`}>
                   {role.description}
                 </div>
               </div>
               {selectedRole === role.value && (
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-1 sm:gap-2">
                   <Zap className="w-4 h-4 text-yellow-300 animate-pulse" />
-                  <div className="w-3 h-3 bg-white rounded-full shadow-lg"></div>
+                  <div className="w-2 h-2 sm:w-3 sm:h-3 bg-white rounded-full shadow-lg"></div>
                 </div>
               )}
             </div>

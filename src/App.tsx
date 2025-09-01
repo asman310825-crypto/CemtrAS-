@@ -159,10 +159,10 @@ function App() {
   }
 
   return (
-    <div className={`h-screen flex flex-col overflow-hidden ${isDarkMode ? 'dark' : ''}`}>
+    <div className={`min-h-screen flex flex-col ${isDarkMode ? 'dark' : ''}`}>
       {/* Enhanced Background Pattern */}
       <div className="fixed inset-0 bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-50 dark:from-gray-900 dark:via-blue-900/10 dark:to-indigo-900/20 -z-10">
-        <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05]">
+        <div className="absolute inset-0 opacity-[0.01] sm:opacity-[0.02] dark:opacity-[0.03] sm:dark:opacity-[0.05]">
           <div className="absolute top-20 left-20 w-64 h-64 border-2 border-blue-500 rounded-full animate-pulse"></div>
           <div className="absolute bottom-32 right-32 w-48 h-48 border-2 border-indigo-400 rounded-lg rotate-45 animate-pulse" style={{ animationDelay: '1s' }}></div>
           <div className="absolute top-1/2 left-1/4 w-32 h-32 border-2 border-blue-300 rounded-full animate-pulse" style={{ animationDelay: '2s' }}></div>
@@ -177,7 +177,7 @@ function App() {
       />
 
       {/* Main Content Area */}
-      <div className="flex-1 flex overflow-hidden relative">
+      <div className="flex-1 flex relative min-h-0">
         {/* Enhanced Sidebar */}
         <Sidebar
           isOpen={sidebarOpen}
@@ -193,8 +193,8 @@ function App() {
         {/* Chat Content Area */}
         <div className="flex-1 flex flex-col min-w-0 relative">
           {/* Scrollable Messages Container */}
-          <div className="flex-1 overflow-y-auto overscroll-contain">
-            <div className="p-4 md:p-6 space-y-6 pb-8">
+          <div className="flex-1 overflow-y-auto overscroll-contain scrollbar-thin">
+            <div className="p-3 sm:p-4 md:p-6 space-y-4 sm:space-y-6 pb-6 sm:pb-8">
               {error && (
                 <ErrorMessage 
                   message={error} 
@@ -217,7 +217,7 @@ function App() {
           </div>
 
           {/* Fixed Input Area */}
-          <div className="border-t border-gray-200/50 dark:border-gray-700/50 bg-white/95 dark:bg-gray-800/95 backdrop-blur-md p-4 md:p-6 flex-shrink-0 relative z-10">
+          <div className="border-t border-gray-200/50 dark:border-gray-700/50 bg-white/95 dark:bg-gray-800/95 backdrop-blur-md p-3 sm:p-4 md:p-6 flex-shrink-0 relative z-10 pb-safe">
             <ChatInput 
               onSend={handleSendMessage}
               isLoading={chatState.isLoading || !!error}
@@ -228,12 +228,12 @@ function App() {
             />
             
             {/* Mobile-Responsive Attribution */}
-            <div className="flex flex-col sm:flex-row items-center justify-center mt-4 gap-2 sm:gap-6 text-xs text-gray-500 dark:text-gray-400">
+            <div className="flex flex-col sm:flex-row items-center justify-center mt-3 sm:mt-4 gap-1 sm:gap-2 md:gap-6 text-xs text-gray-500 dark:text-gray-400">
               <div className="flex items-center gap-2">
                 <div className="w-1.5 h-1.5 bg-blue-500 rounded-full"></div>
                 <span className="font-medium">Made By <span className="text-blue-600 dark:text-blue-400 font-semibold">Vipul</span></span>
               </div>
-              <div className="hidden sm:block w-px h-4 bg-gray-300 dark:bg-gray-600"></div>
+              <div className="hidden md:block w-px h-4 bg-gray-300 dark:bg-gray-600"></div>
               <div className="flex items-center gap-2">
                 <div className="w-1.5 h-1.5 bg-purple-500 rounded-full"></div>
                 <span className="font-medium">Idea By <span className="text-purple-600 dark:text-purple-400 font-semibold">Akanksha</span></span>
