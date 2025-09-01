@@ -221,7 +221,7 @@ function App() {
             <ChatInput 
               onSend={handleSendMessage}
               isLoading={chatState.isLoading || !!error}
-              placeholder={`Ask about cement plant operations (${chatState.selectedRole} expertise)...`}
+              placeholder={`Ask me (${chatState.selectedRole} expertise)...`}
               onFileUpload={handleFileUpload}
               uploadedFiles={chatState.uploadedFiles || []}
               onRemoveFile={handleRemoveFile}
