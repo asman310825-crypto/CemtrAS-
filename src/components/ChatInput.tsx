@@ -120,7 +120,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({
   const hasVoiceSupport = 'webkitSpeechRecognition' in window || 'SpeechRecognition' in window;
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-3 sm:space-y-4 keyboard-safe">
       {/* File Uploads Display */}
       {uploadedFiles.length > 0 && (
         <div className="flex flex-wrap gap-1.5 sm:gap-2">
@@ -137,7 +137,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({
               {onRemoveFile && (
                 <button
                   onClick={() => onRemoveFile(file.id)}
-                  className="p-1 hover:bg-blue-200 dark:hover:bg-blue-800 rounded-full transition-colors touch-target"
+                  className="p-1 hover:bg-blue-200 dark:hover:bg-blue-800 rounded-full transition-colors touch-target min-w-[32px] min-h-[32px] flex items-center justify-center"
                 >
                   <X className="text-blue-600 dark:text-blue-400 w-3 h-3" />
                 </button>
@@ -165,7 +165,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({
               className="w-full px-3 sm:px-4 md:px-6 py-2.5 sm:py-3 md:py-4 pr-16 sm:pr-20 md:pr-24 bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm border-2 border-gray-200/50 dark:border-gray-700/50 rounded-lg sm:rounded-xl md:rounded-2xl resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 disabled:opacity-50 disabled:cursor-not-allowed text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 shadow-lg transition-all duration-200 hover:shadow-xl text-sm sm:text-base no-zoom touch-target"
               rows={1}
               style={{ 
-                minHeight: '44px',
+                minHeight: window.innerWidth < 640 ? '44px' : window.innerWidth < 768 ? '48px' : '52px',
                 maxHeight: window.innerWidth < 640 ? '100px' : window.innerWidth < 768 ? '120px' : '140px'
               }}
             />
@@ -187,7 +187,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({
                     type="button"
                     onClick={() => fileInputRef.current?.click()}
                     disabled={isLoading}
-                    className="touch-target p-1.5 sm:p-2 bg-gray-100/80 dark:bg-gray-700/80 text-gray-600 dark:text-gray-400 hover:bg-gray-200/80 dark:hover:bg-gray-600/80 rounded-md sm:rounded-lg md:rounded-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed backdrop-blur-sm shadow-md hover:shadow-lg"
+                    className="touch-target p-1.5 sm:p-2 bg-gray-100/80 dark:bg-gray-700/80 text-gray-600 dark:text-gray-400 hover:bg-gray-200/80 dark:hover:bg-gray-600/80 rounded-md sm:rounded-lg md:rounded-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed backdrop-blur-sm shadow-md hover:shadow-lg min-w-[36px] min-h-[36px] flex items-center justify-center"
                     title="Upload files"
                   >
                     <Paperclip className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
@@ -203,8 +203,8 @@ export const ChatInput: React.FC<ChatInputProps> = ({
                   disabled={isLoading}
                   className={`p-2 rounded-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed backdrop-blur-sm shadow-md hover:shadow-lg ${
                     isListening 
-                      ? 'bg-red-100/80 text-red-600 hover:bg-red-200/80 animate-pulse p-1.5 sm:p-2 rounded-md sm:rounded-lg md:rounded-xl' 
-                      : 'bg-gray-100/80 dark:bg-gray-700/80 text-gray-600 dark:text-gray-400 hover:bg-gray-200/80 dark:hover:bg-gray-600/80 p-1.5 sm:p-2 rounded-md sm:rounded-lg md:rounded-xl'
+                      ? 'bg-red-100/80 text-red-600 hover:bg-red-200/80 animate-pulse p-1.5 sm:p-2 rounded-md sm:rounded-lg md:rounded-xl touch-target' 
+                      : 'bg-gray-100/80 dark:bg-gray-700/80 text-gray-600 dark:text-gray-400 hover:bg-gray-200/80 dark:hover:bg-gray-600/80 p-1.5 sm:p-2 rounded-md sm:rounded-lg md:rounded-xl touch-target'
                   }`}
                   title={isListening ? "Stop recording" : "Start voice input"}
                 >
@@ -218,7 +218,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({
           <button
             type="submit"
             disabled={!message.trim() || isLoading}
-            className="touch-target p-2.5 sm:p-3 md:p-4 bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 text-white rounded-lg sm:rounded-xl md:rounded-2xl disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 flex-shrink-0 shadow-lg hover:shadow-xl hover:-translate-y-0.5 disabled:transform-none"
+            className="touch-target p-2.5 sm:p-3 md:p-4 bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 text-white rounded-lg sm:rounded-xl md:rounded-2xl disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 flex-shrink-0 shadow-lg hover:shadow-xl hover:-translate-y-0.5 disabled:transform-none min-w-[44px] min-h-[44px] flex items-center justify-center"
             title="Send message"
           >
             <Send className="w-4 h-4 sm:w-5 sm:h-5" />

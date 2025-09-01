@@ -59,7 +59,7 @@ export const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
   };
   
   return (
-    <div className={`flex gap-2 sm:gap-3 md:gap-6 ${isUser ? 'flex-row-reverse' : 'flex-row'} mb-4 sm:mb-6 md:mb-8`}>
+    <div className={`flex gap-2 sm:gap-3 md:gap-6 ${isUser ? 'flex-row-reverse' : 'flex-row'} mb-4 sm:mb-6 md:mb-8 px-1 sm:px-0`}>
       {/* Enhanced Avatar */}
       <div className={`flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-lg sm:rounded-xl md:rounded-2xl flex items-center justify-center shadow-xl ${
         isUser 
@@ -71,7 +71,7 @@ export const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
       
       {/* Enhanced Message Bubble */}
       <div className={`flex-1 max-w-4xl ${isUser ? 'text-right' : 'text-left'}`}>
-        <div className={`inline-block px-3 sm:px-4 md:px-6 py-2.5 sm:py-3 md:py-4 shadow-lg max-w-full backdrop-blur-sm border transition-all duration-200 hover:shadow-xl ${
+        <div className={`inline-block px-3 sm:px-4 md:px-6 py-2.5 sm:py-3 md:py-4 shadow-lg max-w-full backdrop-blur-sm border transition-all duration-200 hover:shadow-xl break-words ${
           isUser
             ? 'bg-gradient-to-br from-blue-600 to-indigo-700 text-white rounded-lg sm:rounded-xl md:rounded-2xl rounded-br-sm sm:rounded-br-md md:rounded-br-lg border-blue-500/50'
             : 'bg-white/90 dark:bg-gray-800/90 text-gray-900 dark:text-white border-gray-200/50 dark:border-gray-700/50 rounded-lg sm:rounded-xl md:rounded-2xl rounded-bl-sm sm:rounded-bl-md md:rounded-bl-lg'
@@ -79,7 +79,7 @@ export const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
           <div className="text-xs sm:text-sm md:text-base leading-relaxed">
             {isUser ? (
               <div className="space-y-2 sm:space-y-3">
-                <div className="font-semibold break-words">{message.content}</div>
+                <div className="font-semibold break-words overflow-wrap-anywhere">{message.content}</div>
                 {message.files && renderFileAttachments(message.files)}
               </div>
             ) : (
@@ -95,7 +95,8 @@ export const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
           <div className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full ${isUser ? 'bg-blue-500' : 'bg-gray-500'}`}></div>
           <span>{isUser ? 'YOU' : 'CemtrAS AI'}</span>
           <span>•</span>
-          <span>{message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
+          <span className="hidden sm:inline">{message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
+          <span className="sm:hidden">{message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false })}</span>
         </div>
       </div>
     </div>

@@ -72,7 +72,7 @@ export const RoleSelector: React.FC<RoleSelectorProps> = ({ selectedRole, onRole
         <button
           key={role.value}
           onClick={() => onRoleChange(role.value)}
-          className={`w-full group relative overflow-hidden rounded-lg sm:rounded-xl md:rounded-2xl transition-all duration-300 touch-target ${
+          className={`w-full group relative overflow-hidden rounded-lg sm:rounded-xl md:rounded-2xl transition-all duration-300 touch-target min-h-[44px] sm:min-h-[48px] md:min-h-[52px] ${
             selectedRole === role.value
               ? 'shadow-xl hover:shadow-2xl transform hover:-translate-y-1'
               : 'shadow-md hover:shadow-lg transform hover:-translate-y-0.5'
@@ -89,7 +89,7 @@ export const RoleSelector: React.FC<RoleSelectorProps> = ({ selectedRole, onRole
               ? 'text-white' 
               : 'bg-white/80 dark:bg-gray-800/80 text-gray-700 dark:text-gray-300 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50'
           } transition-all duration-300`}>
-            <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
+            <div className="flex items-center gap-2 sm:gap-3 md:gap-4 min-h-[32px] sm:min-h-[36px] md:min-h-[40px]">
               <div className={`p-1.5 sm:p-2 rounded-lg sm:rounded-xl shadow-lg ${
                 selectedRole === role.value 
                   ? 'bg-white/20 backdrop-blur-sm' 
@@ -103,14 +103,14 @@ export const RoleSelector: React.FC<RoleSelectorProps> = ({ selectedRole, onRole
                 } transition-colors duration-300 truncate`}>
                   {role.label}
                 </div>
-                <div className={`text-xs hidden sm:block ${
+                <div className={`text-xs hidden md:block ${
                   selectedRole === role.value ? 'text-white/80' : 'text-gray-500 dark:text-gray-400 group-hover:text-white/80'
                 } transition-colors duration-300 truncate`}>
                   {role.description}
                 </div>
               </div>
               {selectedRole === role.value && (
-                <div className="flex items-center gap-1 sm:gap-2">
+                <div className="flex items-center gap-1 sm:gap-2 flex-shrink-0">
                   <Zap className="w-4 h-4 text-yellow-300 animate-pulse" />
                   <div className="w-2 h-2 sm:w-3 sm:h-3 bg-white rounded-full shadow-lg"></div>
                 </div>

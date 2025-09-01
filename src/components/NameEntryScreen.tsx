@@ -29,15 +29,15 @@ export const NameEntryScreen: React.FC<NameEntryScreenProps> = ({ onComplete }) 
   };
 
   return (
-    <div className="bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 min-h-screen overflow-y-auto pb-safe">
+    <div className="bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 min-h-screen mobile-viewport-fix overflow-y-auto pb-safe responsive-container">
       {/* Enhanced Background Pattern */}
-      <div className="fixed inset-0 opacity-5 sm:opacity-10 pointer-events-none">
+      <div className="fixed inset-0 opacity-5 sm:opacity-10 pointer-events-none overflow-hidden">
         <div className="absolute top-20 left-20 w-64 h-64 border-4 border-blue-500 rounded-full animate-pulse"></div>
         <div className="absolute bottom-20 right-20 w-48 h-48 border-4 border-indigo-500 rounded-lg rotate-45 animate-pulse" style={{ animationDelay: '1s' }}></div>
         <div className="absolute top-1/2 right-1/4 w-32 h-32 border-4 border-purple-500 rounded-full animate-pulse" style={{ animationDelay: '2s' }}></div>
       </div>
 
-      <div className="container mx-auto px-4 py-6 sm:py-8 md:py-12 lg:py-16 min-h-screen flex items-center justify-center">
+      <div className="container mx-auto px-4 py-6 sm:py-8 md:py-12 lg:py-16 min-h-screen mobile-viewport-fix flex items-center justify-center landscape-compact">
         <div className="max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl w-full relative z-10 space-y-6 sm:space-y-8">
           {/* Enhanced Header */}
           <div className="text-center space-y-4 sm:space-y-6">
@@ -80,7 +80,7 @@ export const NameEntryScreen: React.FC<NameEntryScreenProps> = ({ onComplete }) 
                 </div>
                 <div className="h-px bg-gradient-to-r from-transparent via-blue-500 to-transparent flex-1 max-w-12 sm:max-w-16 md:max-w-24"></div>
               </div>
-              <p className="text-sm sm:text-base md:text-lg text-slate-600 font-medium px-4">Enter your name to access all premium features</p>
+              <p className="text-sm sm:text-base md:text-lg text-slate-600 font-medium px-4 leading-relaxed">Enter your name to access all premium features</p>
             </div>
           </div>
 
@@ -113,7 +113,8 @@ export const NameEntryScreen: React.FC<NameEntryScreenProps> = ({ onComplete }) 
                     className="w-full pl-11 sm:pl-12 md:pl-14 pr-4 sm:pr-6 py-3 sm:py-4 md:py-5 lg:py-6 border-2 border-slate-300 rounded-xl sm:rounded-2xl 
                              focus:border-blue-500 focus:outline-none transition-all duration-200
                              font-bold text-sm sm:text-base md:text-lg bg-white/80 backdrop-blur-sm shadow-lg
-                             hover:shadow-xl focus:shadow-xl no-zoom touch-target"
+                             hover:shadow-xl focus:shadow-xl no-zoom touch-target min-h-[44px] sm:min-h-[48px] md:min-h-[52px]"
+                    style={{ fontSize: window.innerWidth < 768 ? '16px' : 'inherit' }}
                     required
                     minLength={2}
                     disabled={isLoading}
@@ -137,7 +138,7 @@ export const NameEntryScreen: React.FC<NameEntryScreenProps> = ({ onComplete }) 
                            text-white font-black text-sm sm:text-base md:text-lg rounded-xl sm:rounded-2xl transition-all duration-300 shadow-xl
                            hover:from-blue-700 hover:to-indigo-800 hover:shadow-2xl hover:-translate-y-1
                            disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none
-                           flex items-center justify-center gap-2 sm:gap-3 md:gap-4 touch-target"
+                           flex items-center justify-center gap-2 sm:gap-3 md:gap-4 touch-target min-h-[44px] sm:min-h-[48px] md:min-h-[52px]"
                 >
                   {isLoading ? (
                     <>
@@ -160,14 +161,14 @@ export const NameEntryScreen: React.FC<NameEntryScreenProps> = ({ onComplete }) 
                   <Shield className="w-4 h-4 text-green-500" />
                   🎉 You'll get instant access to:
                 </h4>
-                <div className="grid grid-cols-2 gap-2 sm:gap-3 text-xs sm:text-sm">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 text-xs sm:text-sm">
                   {[
                     { icon: '🤖', text: 'General AI Assistant', color: 'bg-purple-100 text-purple-700' },
                     { icon: '📎', text: 'File Upload Support', color: 'bg-blue-100 text-blue-700' },
                     { icon: '💾', text: 'Chat History & Sessions', color: 'bg-green-100 text-green-700' },
                     { icon: '⚡', text: 'All Expert Areas', color: 'bg-yellow-100 text-yellow-700' }
                   ].map((feature, index) => (
-                    <div key={index} className={`${feature.color} rounded-lg sm:rounded-xl p-2 sm:p-3 text-center font-bold backdrop-blur-sm border border-current/20`}>
+                    <div key={index} className={`${feature.color} rounded-lg sm:rounded-xl p-2 sm:p-3 text-center font-bold backdrop-blur-sm border border-current/20 min-h-[60px] sm:min-h-[70px] flex flex-col items-center justify-center`}>
                       <div className="text-sm sm:text-base md:text-lg mb-1">{feature.icon}</div>
                       <div className="text-xs leading-tight">{feature.text}</div>
                     </div>
