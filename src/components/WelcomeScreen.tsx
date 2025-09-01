@@ -36,7 +36,7 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ selectedRole }) =>
         {/* Corporate Branding */}
         <div className="mb-10">
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-light text-slate-800 dark:text-white mb-3">
-            CementAI <span className="font-semibold">Professional</span>
+            CemtrAS AI <span className="font-semibold">Professional</span>
           </h1>
           <div className="w-24 h-px bg-gradient-to-r from-transparent via-slate-400 to-transparent mx-auto mb-6"></div>
           <p className="text-lg md:text-xl text-slate-600 dark:text-slate-300 font-light max-w-2xl mx-auto mb-6">
