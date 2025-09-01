@@ -90,13 +90,28 @@ export const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
           </div>
         </div>
         
-        {/* Enhanced Timestamp with Short Role Labels */}
-        <div className={`text-xs text-gray-500 dark:text-gray-400 mt-1.5 sm:mt-2 md:mt-3 font-semibold flex items-center gap-1.5 sm:gap-2 ${isUser ? 'justify-end' : 'justify-start'}`}>
-          <div className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full ${isUser ? 'bg-blue-500' : 'bg-gray-500'}`}></div>
-          <span>{isUser ? 'You' : 'CemtrAS'}</span>
-          <span>•</span>
-          <span className="hidden sm:inline">{message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
-          <span className="sm:hidden">{message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false })}</span>
+        {/* Colorful Timestamp with Role Names */}
+        <div className={`text-xs mt-1.5 sm:mt-2 md:mt-3 font-medium flex items-center gap-1.5 sm:gap-2 ${isUser ? 'justify-end' : 'justify-start'}`}>
+          <div className={`w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full animate-pulse ${
+            isUser 
+              ? 'bg-gradient-to-r from-blue-400 to-purple-500' 
+              : 'bg-gradient-to-r from-emerald-400 to-cyan-500'
+          }`}></div>
+          <span className={`font-semibold ${
+            isUser 
+              ? 'text-blue-600 dark:text-blue-400' 
+              : 'text-emerald-600 dark:text-emerald-400'
+          }`}>
+            {isUser ? 'You' : 'CemtrAS'}
+          </span>
+          <span className="text-gray-400">•</span>
+          <span className={`${
+            isUser 
+              ? 'text-blue-500 dark:text-blue-300' 
+              : 'text-emerald-500 dark:text-emerald-300'
+          }`}>
+            {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+          </span>
         </div>
       </div>
     </div>
