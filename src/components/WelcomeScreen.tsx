@@ -8,9 +8,13 @@ interface WelcomeScreenProps {
 
 export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ selectedRole }) => {
   return (
-    <div className="text-center py-8 md:py-16 px-4 md:px-8 max-w-7xl mx-auto">
+    <main 
+      role="main"
+      aria-label="Welcome screen and application overview"
+      className="text-center py-8 md:py-16 px-4 md:px-8 max-w-7xl mx-auto"
+    >
       {/* Professional Header */}
-      <div className="mb-12 md:mb-16">
+      <header className="mb-12 md:mb-16">
         {/* Professional Logo Section */}
         <div className="mb-8">
           <div className="w-20 h-20 md:w-24 md:h-24 mx-auto bg-white dark:bg-slate-800 rounded-2xl shadow-lg flex items-center justify-center mb-6 border border-slate-200 dark:border-slate-700">
@@ -49,7 +53,8 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ selectedRole }) =>
         </div>
 
         {/* Current Expertise Display */}
-        <div className="mb-12">
+        <section aria-labelledby="current-config-heading" className="mb-12">
+          <h2 id="current-config-heading" className="sr-only">Current Configuration</h2>
           <div className="inline-flex items-center gap-4 px-6 py-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
             <div className="w-10 h-10 bg-slate-700 rounded-lg flex items-center justify-center">
               <Target className="text-white w-5 h-5" />
@@ -63,21 +68,28 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ selectedRole }) =>
               </p>
             </div>
           </div>
-        </div>
-      </div>
+        </section>
+      </header>
 
       {/* Professional Capabilities Grid */}
-      <div className="mb-16">
-        <div className="text-center mb-12">
-          <h2 className="text-2xl md:text-3xl font-light text-slate-800 dark:text-white mb-4">
+      <section aria-labelledby="capabilities-heading" className="mb-16">
+        <header className="text-center mb-12">
+          <h2 
+            id="capabilities-heading"
+            className="text-2xl md:text-3xl font-light text-slate-800 dark:text-white mb-4"
+          >
             Core Competencies
           </h2>
           <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
             Comprehensive expertise across all aspects of cement plant operations and management
           </p>
-        </div>
+        </header>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div 
+          role="list"
+          aria-label="Available expertise areas"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
           {[
             { 
               title: 'Operations & Maintenance', 
@@ -118,6 +130,7 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ selectedRole }) =>
           ].map((capability, index) => (
             <div 
               key={index}
+              role="listitem"
               className="group p-6 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all duration-300 hover:border-slate-300 dark:hover:border-slate-600"
             >
               <div className="flex items-start gap-4 mb-4">
@@ -139,13 +152,16 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ selectedRole }) =>
             </div>
           ))}
         </div>
-      </div>
+      </section>
 
       {/* Professional CTA */}
-      <div className="max-w-3xl mx-auto">
+      <section aria-labelledby="cta-heading" className="max-w-3xl mx-auto">
         <div className="p-8 bg-slate-50 dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700">
           <div className="mb-6">
-            <h3 className="text-2xl font-light text-slate-800 dark:text-white mb-3">
+            <h3 
+              id="cta-heading"
+              className="text-2xl font-light text-slate-800 dark:text-white mb-3"
+            >
               Ready to Optimize Your Operations?
             </h3>
             <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
@@ -162,22 +178,26 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ selectedRole }) =>
           </div>
           
           {/* Professional Features */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8 pt-6 border-t border-slate-200 dark:border-slate-700">
-            <div className="text-center">
+          <div 
+            role="list"
+            aria-label="Key features"
+            className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8 pt-6 border-t border-slate-200 dark:border-slate-700"
+          >
+            <div role="listitem" className="text-center">
               <div className="text-2xl font-semibold text-slate-800 dark:text-white mb-1">24/7</div>
               <div className="text-sm text-slate-600 dark:text-slate-400">Availability</div>
             </div>
-            <div className="text-center">
+            <div role="listitem" className="text-center">
               <div className="text-2xl font-semibold text-slate-800 dark:text-white mb-1">Expert</div>
               <div className="text-sm text-slate-600 dark:text-slate-400">Knowledge Base</div>
             </div>
-            <div className="text-center">
+            <div role="listitem" className="text-center">
               <div className="text-2xl font-semibold text-slate-800 dark:text-white mb-1">Instant</div>
               <div className="text-sm text-slate-600 dark:text-slate-400">Responses</div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </section>
+    </main>
   );
 };

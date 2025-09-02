@@ -88,6 +88,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
       {/* Enhanced Sidebar */}
       <div 
+        role="complementary"
+        aria-label="Navigation and chat controls"
         className={`
           ${isOpen ? 'translate-x-0' : '-translate-x-full'}
           fixed lg:static z-50 lg:z-auto
@@ -100,7 +102,11 @@ export const Sidebar: React.FC<SidebarProps> = ({
         `}
       >
         {/* Enhanced Sidebar Header */}
-        <div className="p-3 sm:p-4 md:p-5 lg:p-6 border-b border-gray-200/50 dark:border-gray-700/50 flex-shrink-0 bg-gradient-to-r from-blue-50/50 to-indigo-50/50 dark:from-blue-900/20 dark:to-indigo-900/20">
+        <div 
+          role="banner"
+          aria-label="Sidebar header"
+          className="p-3 sm:p-4 md:p-5 lg:p-6 border-b border-gray-200/50 dark:border-gray-700/50 flex-shrink-0 bg-gradient-to-r from-blue-50/50 to-indigo-50/50 dark:from-blue-900/20 dark:to-indigo-900/20"
+        >
           <div className="flex items-center justify-between mb-3 sm:mb-4 md:mb-6">
             <div className="flex items-center gap-2 sm:gap-3">
               <div className="relative">
@@ -127,7 +133,11 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
           {/* Enhanced User Profile */}
           {user && (
-            <div className="p-2 sm:p-3 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-lg sm:rounded-xl border border-gray-200/50 dark:border-gray-700/50 shadow-lg">
+            <div 
+              role="region"
+              aria-label="User profile information"
+              className="p-2 sm:p-3 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-lg sm:rounded-xl border border-gray-200/50 dark:border-gray-700/50 shadow-lg"
+            >
               <div className="flex items-center gap-2 mb-1 sm:mb-2">
                 <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center shadow-lg">
                   <User className="text-white w-3 h-3 sm:w-3.5 sm:h-3.5" />
@@ -156,7 +166,11 @@ export const Sidebar: React.FC<SidebarProps> = ({
         </div>
 
         {/* Enhanced Content Area */}
-        <div className="flex-1 flex flex-col min-h-0 p-3 sm:p-4 md:p-5 lg:p-6 space-y-3 sm:space-y-4 md:space-y-6 overflow-y-auto scrollbar-thin overscroll-contain">
+        <nav 
+          role="navigation"
+          aria-label="Chat navigation and controls"
+          className="flex-1 flex flex-col min-h-0 p-3 sm:p-4 md:p-5 lg:p-6 space-y-3 sm:space-y-4 md:space-y-6 overflow-y-auto scrollbar-thin overscroll-contain"
+        >
           {/* New Chat Button */}
           <button
             onClick={handleNewChatClick}
@@ -167,8 +181,11 @@ export const Sidebar: React.FC<SidebarProps> = ({
           </button>
 
           {/* Role Selection */}
-          <div>
-            <h4 className="text-sm font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wide mb-4 flex items-center gap-2">
+          <section aria-labelledby="role-selection-heading">
+            <h4 
+              id="role-selection-heading"
+              className="text-sm font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wide mb-4 flex items-center gap-2"
+            >
               <Zap className="w-5 h-5 text-blue-500" />
               Select Expertise
             </h4>
@@ -178,17 +195,24 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 onRoleChange={handleRoleChange}
               />
             </div>
-          </div>
+          </section>
 
           {/* Unified Chat History */}
-          <div className="flex-1 min-h-0">
-            <h4 className="text-sm font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wide mb-4 flex items-center gap-2">
+          <section aria-labelledby="chat-history-heading" className="flex-1 min-h-0">
+            <h4 
+              id="chat-history-heading"
+              className="text-sm font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wide mb-4 flex items-center gap-2"
+            >
               <History className="w-5 h-5 text-purple-500" />
               Chat History
             </h4>
             <div className="h-full overflow-y-auto pr-1 sm:pr-2 space-y-2 scrollbar-thin overscroll-contain">
               {histories.length === 0 ? (
-                <div className="text-center py-4 sm:py-6 md:py-8">
+                <div 
+                  role="status"
+                  aria-label="No chat history available"
+                  className="text-center py-4 sm:py-6 md:py-8"
+                >
                   <MessageSquare className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-gray-300 dark:text-gray-600 mx-auto mb-2 sm:mb-3" />
                   <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 font-medium">
                     No chat history yet
@@ -202,6 +226,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                   <button
                     key={chat.id}
                     onClick={() => handleChatSelect(chat.id)}
+                    aria-label={`Load chat: ${chat.title}`}
                     className="w-full text-left p-2.5 sm:p-3 md:p-4 bg-white/60 dark:bg-gray-800/60 hover:bg-white/80 dark:hover:bg-gray-800/80 rounded-lg sm:rounded-xl border border-gray-200/50 dark:border-gray-700/50 transition-all duration-200 backdrop-blur-sm shadow-sm hover:shadow-md group touch-target min-h-[44px] flex items-center"
                   >
                     <div className="flex items-center gap-2 sm:gap-3 w-full">
@@ -229,10 +254,14 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 ))
               )}
             </div>
-          </div>
+          </section>
 
           {/* Enhanced Stats */}
-          <div className="space-y-2 sm:space-y-3 pt-3 sm:pt-4 border-t border-gray-200/50 dark:border-gray-700/50 flex-shrink-0">
+          <section 
+            role="region"
+            aria-label="Chat statistics"
+            className="space-y-2 sm:space-y-3 pt-3 sm:pt-4 border-t border-gray-200/50 dark:border-gray-700/50 flex-shrink-0"
+          >
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
               <div className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-lg sm:rounded-xl p-3 sm:p-4 border border-blue-200/50 dark:border-blue-800/50">
                 <div className="flex items-center gap-2 mb-2">
@@ -256,11 +285,15 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 </p>
               </div>
             </div>
-          </div>
-        </div>
+          </section>
+        </nav>
 
         {/* Enhanced Footer with Attribution */}
-        <div className="p-3 sm:p-4 md:p-5 lg:p-6 border-t border-gray-200/50 dark:border-gray-700/50 flex-shrink-0 bg-gradient-to-r from-gray-50/50 to-blue-50/50 dark:from-gray-800/50 dark:to-blue-900/20 pb-safe">
+        <footer 
+          role="contentinfo"
+          aria-label="Application information and credits"
+          className="p-3 sm:p-4 md:p-5 lg:p-6 border-t border-gray-200/50 dark:border-gray-700/50 flex-shrink-0 bg-gradient-to-r from-gray-50/50 to-blue-50/50 dark:from-gray-800/50 dark:to-blue-900/20 pb-safe"
+        >
           <div className="text-center space-y-3">
             {/* Attribution */}
             <div className="space-y-1 sm:space-y-2">
@@ -285,33 +318,47 @@ export const Sidebar: React.FC<SidebarProps> = ({
               </p>
             </div>
           </div>
-        </div>
+        </footer>
       </div>
 
       {/* Enhanced Logout Confirmation Modal */}
       {showLogoutConfirm && (
-        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[60] p-4 sm:p-6 mobile-viewport-fix">
+        <div 
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="logout-dialog-title"
+          aria-describedby="logout-dialog-description"
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[60] p-4 sm:p-6 mobile-viewport-fix"
+        >
           <div className="bg-white/95 dark:bg-gray-800/95 backdrop-blur-md rounded-2xl sm:rounded-3xl p-6 sm:p-8 max-w-xs sm:max-w-sm w-full shadow-2xl border border-gray-200/50 dark:border-gray-700/50">
             <div className="text-center mb-4 sm:mb-6">
               <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-red-500 to-pink-600 rounded-xl sm:rounded-2xl flex items-center justify-center mx-auto mb-3 sm:mb-4 shadow-lg">
                 <LogOut className="text-white w-6 h-6 sm:w-8 sm:h-8" />
               </div>
-              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-2">
+              <h3 
+                id="logout-dialog-title"
+                className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-2"
+              >
                 Confirm Logout
               </h3>
-              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed">
+              <p 
+                id="logout-dialog-description"
+                className="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed"
+              >
                 Are you sure you want to logout? Your chat history will be preserved for when you return.
               </p>
             </div>
             <div className="flex gap-2 sm:gap-3">
               <button
                 onClick={() => setShowLogoutConfirm(false)}
+                aria-label="Cancel logout"
                 className="flex-1 py-3 sm:py-4 px-4 sm:px-6 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-xl sm:rounded-2xl font-bold hover:bg-gray-200 dark:hover:bg-gray-600 transition-all duration-200 shadow-md text-sm sm:text-base touch-target min-h-[44px] flex items-center justify-center"
               >
                 Cancel
               </button>
               <button
                 onClick={handleLogout}
+                aria-label="Confirm logout"
                 className="flex-1 py-3 sm:py-4 px-4 sm:px-6 bg-gradient-to-r from-red-600 to-pink-600 text-white rounded-xl sm:rounded-2xl font-bold hover:from-red-700 hover:to-pink-700 transition-all duration-200 shadow-lg text-sm sm:text-base touch-target min-h-[44px] flex items-center justify-center"
               >
                 Logout

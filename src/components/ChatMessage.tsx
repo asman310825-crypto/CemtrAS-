@@ -59,13 +59,21 @@ export const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
   };
   
   return (
-    <div className={`flex gap-2 sm:gap-3 md:gap-6 ${isUser ? 'flex-row-reverse' : 'flex-row'} mb-4 sm:mb-6 md:mb-8 px-1 sm:px-0`}>
+    <article 
+      role="article"
+      aria-label={`Message from ${isUser ? 'user' : 'AI assistant'}`}
+      className={`flex gap-2 sm:gap-3 md:gap-6 ${isUser ? 'flex-row-reverse' : 'flex-row'} mb-4 sm:mb-6 md:mb-8 px-1 sm:px-0`}
+    >
       {/* Enhanced Avatar */}
-      <div className={`flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-lg sm:rounded-xl md:rounded-2xl flex items-center justify-center shadow-xl ${
+      <div 
+        role="img"
+        aria-label={`${isUser ? 'User' : 'AI assistant'} avatar`}
+        className={`flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-lg sm:rounded-xl md:rounded-2xl flex items-center justify-center shadow-xl ${
         isUser 
           ? 'bg-gradient-to-br from-blue-600 to-indigo-700' 
           : 'bg-gradient-to-br from-gray-700 to-gray-900 dark:from-gray-600 dark:to-gray-800'
-      }`}>
+      }`}
+      >
         {isUser ? <User className="text-white w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5" /> : <Bot className="text-white w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5" />}
       </div>
       
@@ -114,6 +122,6 @@ export const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
           </span>
         </div>
       </div>
-    </div>
+    </article>
   );
 };

@@ -191,9 +191,18 @@ function App() {
         />
 
         {/* Chat Content Area */}
-        <div className="flex-1 flex flex-col min-w-0 relative">
+        <main 
+          role="main"
+          aria-label="Chat conversation area"
+          className="flex-1 flex flex-col min-w-0 relative"
+        >
           {/* Scrollable Messages Container */}
-          <div className="flex-1 overflow-y-auto overscroll-contain scrollbar-thin mobile-viewport-fix">
+          <section 
+            role="log"
+            aria-live="polite"
+            aria-label="Chat messages"
+            className="flex-1 overflow-y-auto overscroll-contain scrollbar-thin mobile-viewport-fix"
+          >
             <div className="p-3 sm:p-4 md:p-6 space-y-4 sm:space-y-6 pb-6 sm:pb-8">
               {error && (
                 <ErrorMessage 
@@ -214,7 +223,7 @@ function App() {
               )}
               <div ref={messagesEndRef} />
             </div>
-          </div>
+          </section>
 
           {/* Fixed Input Area */}
           <div className="border-t border-gray-200/50 dark:border-gray-700/50 bg-white/95 dark:bg-gray-800/95 backdrop-blur-md p-3 sm:p-4 md:p-6 flex-shrink-0 relative z-10 pb-safe keyboard-safe">
@@ -240,7 +249,7 @@ function App() {
               </div>
             </div>
           </div>
-        </div>
+        </main>
       </div>
     </div>
   );

@@ -3,9 +3,17 @@ import { Bot, Sparkles, Zap } from 'lucide-react';
 
 export const LoadingMessage: React.FC = () => {
   return (
-    <div className="flex gap-6 mb-8">
+    <article 
+      role="status"
+      aria-live="polite"
+      aria-label="AI is processing your message"
+      className="flex gap-6 mb-8"
+    >
       {/* Enhanced Avatar */}
-      <div className="flex-shrink-0 w-12 h-12 rounded-2xl flex items-center justify-center 
+      <div 
+        role="img"
+        aria-label="AI assistant avatar"
+        className="flex-shrink-0 w-12 h-12 rounded-2xl flex items-center justify-center 
                       bg-gradient-to-br from-gray-700 to-gray-900 dark:from-gray-600 dark:to-gray-800 shadow-xl">
         <Bot size={18} className="text-white" />
       </div>
@@ -41,6 +49,6 @@ export const LoadingMessage: React.FC = () => {
           <span>Processing...</span>
         </div>
       </div>
-    </div>
+    </article>
   );
 };

@@ -15,7 +15,11 @@ export const Header: React.FC<HeaderProps> = ({ sidebarOpen, setSidebarOpen, sel
   const { isDarkMode, toggleDarkMode } = useTheme();
 
   return (
-    <div className="bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-b border-gray-200/50 dark:border-gray-700/50 p-2 sm:p-3 md:p-4 lg:p-5 xl:p-6 shadow-lg flex-shrink-0 relative z-20 pt-safe">
+    <header 
+      role="banner" 
+      aria-label="Main application header"
+      className="bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-b border-gray-200/50 dark:border-gray-700/50 p-2 sm:p-3 md:p-4 lg:p-5 xl:p-6 shadow-lg flex-shrink-0 relative z-20 pt-safe"
+    >
       <div className="flex items-center justify-between">
         {/* Left Section - Enhanced Branding */}
         <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
@@ -91,6 +95,6 @@ export const Header: React.FC<HeaderProps> = ({ sidebarOpen, setSidebarOpen, sel
           </div>
         </div>
       </div>
-    </div>
+    </header>
   );
 };

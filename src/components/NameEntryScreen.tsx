@@ -29,7 +29,11 @@ export const NameEntryScreen: React.FC<NameEntryScreenProps> = ({ onComplete }) 
   };
 
   return (
-    <div className="bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 min-h-screen mobile-viewport-fix overflow-y-auto pb-safe responsive-container">
+    <main 
+      role="main"
+      aria-label="User authentication screen"
+      className="bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 min-h-screen mobile-viewport-fix overflow-y-auto pb-safe responsive-container"
+    >
       {/* Enhanced Background Pattern */}
       <div className="fixed inset-0 opacity-5 sm:opacity-10 pointer-events-none overflow-hidden">
         <div className="absolute top-20 left-20 w-64 h-64 border-4 border-blue-500 rounded-full animate-pulse"></div>
@@ -40,7 +44,7 @@ export const NameEntryScreen: React.FC<NameEntryScreenProps> = ({ onComplete }) 
       <div className="container mx-auto px-4 py-6 sm:py-8 md:py-12 lg:py-16 min-h-screen mobile-viewport-fix flex items-center justify-center landscape-compact">
         <div className="max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl w-full relative z-10 space-y-6 sm:space-y-8">
           {/* Enhanced Header */}
-          <div className="text-center space-y-4 sm:space-y-6">
+          <header className="text-center space-y-4 sm:space-y-6">
             {/* Enhanced Logo with your actual logo */}
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-blue-600/30 to-indigo-600/30 rounded-full blur-2xl"></div>
@@ -65,34 +69,48 @@ export const NameEntryScreen: React.FC<NameEntryScreenProps> = ({ onComplete }) 
               </div>
               <p className="text-sm sm:text-base md:text-lg text-slate-600 font-medium px-4 leading-relaxed">Enter your name to access all premium features</p>
             </div>
-          </div>
+          </header>
 
           {/* Enhanced Name Entry Form */}
-          <div className="bg-white/90 backdrop-blur-md rounded-2xl sm:rounded-3xl shadow-2xl border-2 border-slate-200/50 overflow-hidden">
-            <div className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-3 sm:py-4 md:py-6 px-4 sm:px-6 md:px-8 text-center">
-              <h2 className="text-lg sm:text-xl md:text-2xl font-bold flex items-center justify-center gap-2 sm:gap-3">
+          <section 
+            aria-labelledby="auth-form-heading"
+            className="bg-white/90 backdrop-blur-md rounded-2xl sm:rounded-3xl shadow-2xl border-2 border-slate-200/50 overflow-hidden"
+          >
+            <header className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-3 sm:py-4 md:py-6 px-4 sm:px-6 md:px-8 text-center">
+              <h2 
+                id="auth-form-heading"
+                className="text-lg sm:text-xl md:text-2xl font-bold flex items-center justify-center gap-2 sm:gap-3"
+              >
                 <User className="w-5 h-5 sm:w-6 sm:h-6" />
                 Welcome! What's your name?
               </h2>
-            </div>
+            </header>
 
             <div className="p-4 sm:p-6 md:p-8">
               {/* Error Display */}
               {error && (
-                <div className="bg-red-50 border-2 border-red-200 rounded-xl sm:rounded-2xl p-3 sm:p-4 mb-4 sm:mb-6 text-center backdrop-blur-sm">
+                <div 
+                  role="alert"
+                  aria-live="assertive"
+                  className="bg-red-50 border-2 border-red-200 rounded-xl sm:rounded-2xl p-3 sm:p-4 mb-4 sm:mb-6 text-center backdrop-blur-sm"
+                >
                   <p className="text-red-700 font-bold text-xs sm:text-sm">{error}</p>
                 </div>
               )}
 
               <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
                 {/* Enhanced Name Input */}
-                <div className="relative">
+                <div className="relative" role="group" aria-labelledby="name-input-label">
+                  <label id="name-input-label" className="sr-only">Enter your name</label>
                   <User className="absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 text-slate-400 w-5 h-5 sm:w-6 sm:h-6" />
                   <input
                     type="text"
                     value={name}
                     onChange={handleInputChange}
                     placeholder="Enter your name"
+                    aria-required="true"
+                    aria-invalid={error ? 'true' : 'false'}
+                    aria-describedby="name-requirements"
                     className="w-full pl-11 sm:pl-12 md:pl-14 pr-4 sm:pr-6 py-3 sm:py-4 md:py-5 lg:py-6 border-2 border-slate-300 rounded-xl sm:rounded-2xl 
                              focus:border-blue-500 focus:outline-none transition-all duration-200
                              font-bold text-sm sm:text-base md:text-lg bg-white/80 backdrop-blur-sm shadow-lg
@@ -105,7 +123,7 @@ export const NameEntryScreen: React.FC<NameEntryScreenProps> = ({ onComplete }) 
                 </div>
 
                 {/* Character Count */}
-                <div className="text-right">
+                <div id="name-requirements" className="text-right">
                   <span className={`text-xs font-bold ${
                     name.length >= 2 ? 'text-green-600' : 'text-gray-400'
                   }`}>
@@ -117,6 +135,7 @@ export const NameEntryScreen: React.FC<NameEntryScreenProps> = ({ onComplete }) 
                 <button
                   type="submit"
                   disabled={name.trim().length < 2 || isLoading}
+                  aria-describedby="submit-help"
                   className="w-full py-3 sm:py-4 md:py-5 px-4 sm:px-6 md:px-8 bg-gradient-to-r from-blue-600 to-indigo-700
                            text-white font-black text-sm sm:text-base md:text-lg rounded-xl sm:rounded-2xl transition-all duration-300 shadow-xl
                            hover:from-blue-700 hover:to-indigo-800 hover:shadow-2xl hover:-translate-y-1
@@ -136,31 +155,49 @@ export const NameEntryScreen: React.FC<NameEntryScreenProps> = ({ onComplete }) 
                     </>
                   )}
                 </button>
+                <div id="submit-help" className="sr-only">
+                  Submit form to access AI assistant features
+                </div>
               </form>
 
               {/* Enhanced Features List */}
-              <div className="mt-6 sm:mt-8 md:mt-10 space-y-3 sm:space-y-4">
-                <h4 className="text-xs sm:text-sm font-black text-slate-700 text-center mb-3 sm:mb-4 md:mb-6 flex items-center justify-center gap-2">
+              <section aria-labelledby="features-heading" className="mt-6 sm:mt-8 md:mt-10 space-y-3 sm:space-y-4">
+                <h4 
+                  id="features-heading"
+                  className="text-xs sm:text-sm font-black text-slate-700 text-center mb-3 sm:mb-4 md:mb-6 flex items-center justify-center gap-2"
+                >
                   <Shield className="w-4 h-4 text-green-500" />
                   🎉 You'll get instant access to:
                 </h4>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 text-xs sm:text-sm">
+                <div 
+                  role="list"
+                  aria-label="Available features"
+                  className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 text-xs sm:text-sm"
+                >
                   {[
                     { icon: '🤖', text: 'General AI Assistant', color: 'bg-purple-100 text-purple-700' },
                     { icon: '📎', text: 'File Upload Support', color: 'bg-blue-100 text-blue-700' },
                     { icon: '💾', text: 'Chat History & Sessions', color: 'bg-green-100 text-green-700' },
                     { icon: '⚡', text: 'All Expert Areas', color: 'bg-yellow-100 text-yellow-700' }
                   ].map((feature, index) => (
-                    <div key={index} className={`${feature.color} rounded-lg sm:rounded-xl p-2 sm:p-3 text-center font-bold backdrop-blur-sm border border-current/20 min-h-[60px] sm:min-h-[70px] flex flex-col items-center justify-center`}>
+                    <div 
+                      key={index} 
+                      role="listitem"
+                      className={`${feature.color} rounded-lg sm:rounded-xl p-2 sm:p-3 text-center font-bold backdrop-blur-sm border border-current/20 min-h-[60px] sm:min-h-[70px] flex flex-col items-center justify-center`}
+                    >
                       <div className="text-sm sm:text-base md:text-lg mb-1">{feature.icon}</div>
                       <div className="text-xs leading-tight">{feature.text}</div>
                     </div>
                   ))}
                 </div>
-              </div>
+              </section>
 
               {/* Attribution */}
-              <div className="mt-4 sm:mt-6 md:mt-8 pt-3 sm:pt-4 md:pt-6 border-t border-gray-200 text-center space-y-1 sm:space-y-2">
+              <footer 
+                role="contentinfo"
+                aria-label="Application credits"
+                className="mt-4 sm:mt-6 md:mt-8 pt-3 sm:pt-4 md:pt-6 border-t border-gray-200 text-center space-y-1 sm:space-y-2"
+              >
                 <div className="flex items-center justify-center gap-2 text-xs text-gray-600">
                   <div className="w-1.5 h-1.5 bg-blue-500 rounded-full"></div>
                   <span>Made By <span className="font-bold text-blue-600">Vipul</span></span>
@@ -169,11 +206,11 @@ export const NameEntryScreen: React.FC<NameEntryScreenProps> = ({ onComplete }) 
                   <div className="w-1.5 h-1.5 bg-purple-500 rounded-full"></div>
                   <span>Idea By <span className="font-bold text-purple-600">Akanksha</span></span>
                 </div>
-              </div>
+              </footer>
             </div>
-          </div>
+          </section>
         </div>
       </div>
-    </div>
+    </main>
   );
  };
