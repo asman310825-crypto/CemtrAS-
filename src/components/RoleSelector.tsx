@@ -107,9 +107,9 @@ export const RoleSelector: React.FC<RoleSelectorProps> = ({ selectedRole, onRole
                   {role.label}
                 </div>
                 <div className={`text-xs hidden md:block ${
-                  id={`role-desc-${role.value.replace(/\s+/g, '-').toLowerCase()}`}
                   selectedRole === role.value ? 'text-white/80' : 'text-gray-500 dark:text-gray-400 group-hover:text-white/80'
                 } transition-colors duration-300 truncate`}>
+                id={`role-desc-${role.value.replace(/\s+/g, '-').toLowerCase()}`}
                   {role.description}
                 </div>
               </div>
