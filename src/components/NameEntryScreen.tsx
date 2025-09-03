@@ -58,7 +58,7 @@ export const NameEntryScreen: React.FC<NameEntryScreenProps> = ({ onComplete }) 
             {/* Enhanced Branding */}
             <div className="space-y-3 sm:space-y-4">
               <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
-                AI Assistant
+                CemtrAS AI
               </h1>
               <div className="flex items-center justify-center gap-2 sm:gap-3">
                 <div className="h-px bg-gradient-to-r from-transparent via-blue-500 to-transparent flex-1 max-w-12 sm:max-w-16 md:max-w-24"></div>
