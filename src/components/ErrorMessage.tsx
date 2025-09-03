@@ -8,7 +8,12 @@ interface ErrorMessageProps {
 
 export const ErrorMessage: React.FC<ErrorMessageProps> = ({ message, onRetry }) => {
   return (
-    <div className="bg-gradient-to-r from-red-50 to-pink-50 dark:from-red-900/20 dark:to-pink-900/20 border-2 border-red-200/50 dark:border-red-800/50 rounded-2xl p-6 mb-6 backdrop-blur-sm shadow-lg">
+    <div 
+      role="alert"
+      aria-live="assertive"
+      aria-atomic="true"
+      className="bg-gradient-to-r from-red-50 to-pink-50 dark:from-red-900/20 dark:to-pink-900/20 border-2 border-red-200/50 dark:border-red-800/50 rounded-2xl p-6 mb-6 backdrop-blur-sm shadow-lg"
+    >
       <div className="flex items-center gap-6">
         {/* Enhanced Error Icon */}
         <div className="p-4 bg-gradient-to-br from-red-500 to-pink-600 rounded-2xl shadow-xl">
@@ -28,6 +33,7 @@ export const ErrorMessage: React.FC<ErrorMessageProps> = ({ message, onRetry }) 
         {onRetry && (
           <button
             onClick={onRetry}
+            aria-label="Retry the failed operation"
             className="px-6 py-3 bg-gradient-to-r from-red-600 to-pink-600 text-white text-sm rounded-2xl 
                      hover:from-red-700 hover:to-pink-700 transition-all duration-200 font-bold
                      flex items-center gap-3 shadow-lg hover:shadow-xl hover:-translate-y-0.5"

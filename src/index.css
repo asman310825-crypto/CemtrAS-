@@ -108,6 +108,45 @@
     border: 0;
   }
   
+  /* Skip link for keyboard navigation */
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: #000;
+    color: #fff;
+    padding: 8px;
+    text-decoration: none;
+    border-radius: 4px;
+    z-index: 1000;
+    font-weight: bold;
+  }
+  
+  .skip-link:focus {
+    top: 6px;
+  }
+  
+  /* Landmark navigation styles */
+  [role="banner"] {
+    position: relative;
+  }
+  
+  [role="main"] {
+    position: relative;
+  }
+  
+  [role="navigation"] {
+    position: relative;
+  }
+  
+  [role="complementary"] {
+    position: relative;
+  }
+  
+  [role="contentinfo"] {
+    position: relative;
+  }
+  
   @media (min-width: 768px) {
     .no-zoom {
       font-size: inherit;

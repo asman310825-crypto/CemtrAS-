@@ -159,7 +159,7 @@ function App() {
   }
 
   return (
-    <div className={`min-h-screen mobile-viewport-fix flex flex-col responsive-container ${isDarkMode ? 'dark' : ''}`}>
+    <div className={`min-h-screen mobile-viewport-fix flex flex-col responsive-container ${isDarkMode ? 'dark' : ''}`} role="application" aria-label="AI Assistant Chat Application">
       {/* Enhanced Background Pattern */}
       <div className="fixed inset-0 bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-50 dark:from-gray-900 dark:via-blue-900/10 dark:to-indigo-900/20 -z-10">
         <div className="absolute inset-0 opacity-[0.01] sm:opacity-[0.02] dark:opacity-[0.03] sm:dark:opacity-[0.05] overflow-hidden">
@@ -169,16 +169,16 @@ function App() {
         </div>
       </div>
 
-      {/* Fixed Header */}
+      {/* Application Header - Banner Landmark */}
       <Header
         sidebarOpen={sidebarOpen}
         setSidebarOpen={setSidebarOpen}
         selectedRole={chatState.selectedRole}
       />
 
-      {/* Main Content Area */}
+      {/* Main Application Layout */}
       <div className="flex-1 flex relative min-h-0">
-        {/* Enhanced Sidebar */}
+        {/* Sidebar Navigation - Complementary Landmark */}
         <Sidebar
           isOpen={sidebarOpen}
           onClose={() => setSidebarOpen(false)}
@@ -190,19 +190,23 @@ function App() {
           isLoading={chatState.isLoading}
         />
 
-        {/* Chat Content Area */}
+        {/* Primary Chat Interface - Main Landmark */}
         <main 
           role="main"
-          aria-label="Chat conversation area"
+          aria-label="AI Assistant Chat Interface"
           className="flex-1 flex flex-col min-w-0 relative"
         >
-          {/* Scrollable Messages Container */}
+          {/* Chat Messages Region */}
           <section 
             role="log"
             aria-live="polite"
-            aria-label="Chat messages"
+            aria-label="Conversation history"
+            aria-describedby="chat-description"
             className="flex-1 overflow-y-auto overscroll-contain scrollbar-thin mobile-viewport-fix"
           >
+            <div id="chat-description" className="sr-only">
+              Live conversation between you and the AI assistant. New messages will be announced automatically.
+            </div>
             <div className="p-3 sm:p-4 md:p-6 space-y-4 sm:space-y-6 pb-6 sm:pb-8">
               {error && (
                 <ErrorMessage 
@@ -225,8 +229,12 @@ function App() {
             </div>
           </section>
 
-          {/* Fixed Input Area */}
-          <div className="border-t border-gray-200/50 dark:border-gray-700/50 bg-white/95 dark:bg-gray-800/95 backdrop-blur-md p-3 sm:p-4 md:p-6 flex-shrink-0 relative z-10 pb-safe keyboard-safe">
+          {/* Message Input Region */}
+          <section 
+            role="region"
+            aria-label="Message composition"
+            className="border-t border-gray-200/50 dark:border-gray-700/50 bg-white/95 dark:bg-gray-800/95 backdrop-blur-md p-3 sm:p-4 md:p-6 flex-shrink-0 relative z-10 pb-safe keyboard-safe"
+          >
             <ChatInput 
               onSend={handleSendMessage}
               isLoading={chatState.isLoading || !!error}
@@ -236,8 +244,12 @@ function App() {
               onRemoveFile={handleRemoveFile}
             />
             
-            {/* Mobile-Responsive Attribution */}
-            <div className="flex flex-col sm:flex-row items-center justify-center mt-3 sm:mt-4 gap-1 sm:gap-2 md:gap-6 text-xs text-gray-500 dark:text-gray-400">
+            {/* Application Credits - Content Info */}
+            <footer 
+              role="contentinfo"
+              aria-label="Application credits and attribution"
+              className="flex flex-col sm:flex-row items-center justify-center mt-3 sm:mt-4 gap-1 sm:gap-2 md:gap-6 text-xs text-gray-500 dark:text-gray-400"
+            >
               <div className="flex items-center gap-2">
                 <div className="w-1.5 h-1.5 bg-blue-500 rounded-full"></div>
                 <span className="font-medium">Made By <span className="text-blue-600 dark:text-blue-400 font-semibold">Vipul</span></span>
@@ -247,8 +259,8 @@ function App() {
                 <div className="w-1.5 h-1.5 bg-purple-500 rounded-full"></div>
                 <span className="font-medium">Idea By <span className="text-purple-600 dark:text-purple-400 font-semibold">Akanksha</span></span>
               </div>
-            </div>
-          </div>
+            </footer>
+          </section>
         </main>
       </div>
     </div>

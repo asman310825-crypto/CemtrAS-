@@ -67,11 +67,14 @@ const roles: {
 
 export const RoleSelector: React.FC<RoleSelectorProps> = ({ selectedRole, onRoleChange }) => {
   return (
-    <div className="space-y-2 sm:space-y-3">
+    <div className="space-y-2 sm:space-y-3" role="radiogroup" aria-label="Select AI expertise area">
       {roles.map((role) => (
         <button
           key={role.value}
           onClick={() => onRoleChange(role.value)}
+          role="radio"
+          aria-checked={selectedRole === role.value}
+          aria-describedby={`role-desc-${role.value.replace(/\s+/g, '-').toLowerCase()}`}
           className={`w-full group relative overflow-hidden rounded-lg sm:rounded-xl md:rounded-2xl transition-all duration-300 touch-target min-h-[44px] sm:min-h-[48px] md:min-h-[52px] ${
             selectedRole === role.value
               ? 'shadow-xl hover:shadow-2xl transform hover:-translate-y-1'
@@ -104,6 +107,7 @@ export const RoleSelector: React.FC<RoleSelectorProps> = ({ selectedRole, onRole
                   {role.label}
                 </div>
                 <div className={`text-xs hidden md:block ${
+                  id={`role-desc-${role.value.replace(/\s+/g, '-').toLowerCase()}`}
                   selectedRole === role.value ? 'text-white/80' : 'text-gray-500 dark:text-gray-400 group-hover:text-white/80'
                 } transition-colors duration-300 truncate`}>
                   {role.description}
