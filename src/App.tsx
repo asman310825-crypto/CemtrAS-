@@ -207,7 +207,7 @@ function App() {
             <div id="chat-description" className="sr-only">
               Live conversation between you and the AI assistant. New messages will be announced automatically.
             </div>
-            <div className="p-3 sm:p-4 md:p-6 space-y-4 sm:space-y-6 pb-6 sm:pb-8">
+            <div className="p-3 sm:p-4 space-y-4 pb-6">
               {error && (
                 <ErrorMessage 
                   message={error} 
@@ -233,7 +233,7 @@ function App() {
           <section 
             role="region"
             aria-label="Message composition"
-            className="border-t border-gray-200/50 dark:border-gray-700/50 bg-white/95 dark:bg-gray-800/95 backdrop-blur-md p-3 sm:p-4 md:p-6 flex-shrink-0 relative z-10 pb-safe keyboard-safe"
+            className="border-t border-gray-200/50 dark:border-gray-700/50 bg-white/95 dark:bg-gray-800/95 backdrop-blur-md p-3 sm:p-4 flex-shrink-0 relative z-10 pb-safe keyboard-safe"
           >
             <ChatInput 
               onSend={handleSendMessage}
@@ -248,13 +248,13 @@ function App() {
             <footer 
               role="contentinfo"
               aria-label="Application credits and attribution"
-              className="flex flex-col sm:flex-row items-center justify-center mt-3 sm:mt-4 gap-1 sm:gap-2 md:gap-6 text-xs text-gray-500 dark:text-gray-400"
+              className="flex flex-col sm:flex-row items-center justify-center mt-3 gap-1 sm:gap-2 text-xs text-gray-500 dark:text-gray-400"
             >
               <div className="flex items-center gap-2">
                 <div className="w-1.5 h-1.5 bg-blue-500 rounded-full"></div>
                 <span className="font-medium">Made By <span className="text-blue-600 dark:text-blue-400 font-semibold">Vipul</span></span>
               </div>
-              <div className="hidden md:block w-px h-4 bg-gray-300 dark:bg-gray-600"></div>
+              <div className="hidden sm:block w-px h-4 bg-gray-300 dark:bg-gray-600"></div>
               <div className="flex items-center gap-2">
                 <div className="w-1.5 h-1.5 bg-purple-500 rounded-full"></div>
                 <span className="font-medium">Idea By <span className="text-purple-600 dark:text-purple-400 font-semibold">Akanksha</span></span>
